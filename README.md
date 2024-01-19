@@ -87,3 +87,6 @@ Two Carousel components are made, both supporting button and touch navigation.
 |**Name**|**Type**|**Description**|
 | :- | :- | :- |
 |*onSlideChange*|*function*|*Function for calling on slide change*|
+=======
+# Implementing a Image Carousel Component
+
