@@ -1,0 +1,84 @@
+/* Utility Classes */
+.show{
+    display: block;
+}
+
+.none{
+    display: none;
+}
+
+.button {
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    outline: none;
+}
+
+.button:focus {
+    border: none;
+}
+
+.button:disabled{
+    cursor:not-allowed;
+}
+
+.svg{
+    width: 4vw;
+    height: 4vh;
+}
+
+/* Main Carousel Styling */
+.carousel{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.container{
+    display: flex;
+    align-items: center;
+}
+
+.carousel:focus{
+    outline: none;
+}
+
+.slides{
+    display: block;
+    width: 100vw;
+    max-width: 450px;
+    text-align: center;
+}
+
+.slide img{
+    max-width: 100%;
+    min-width: 200px;
+    height: 200px;
+    border-radius:8px;
+}
+
+.dots{
+    height: 10px;
+    width: 10px;
+    margin: 0 2px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+/* Styling for Mobile Devices*/
+@media screen and (max-width:425px) {
+    .dots{
+        width: 7px;
+        height: 7px;
+    }
+    .carousel{
+        padding-top: 1rem;
+        padding-bottom: 0rem;
+    }
+}
