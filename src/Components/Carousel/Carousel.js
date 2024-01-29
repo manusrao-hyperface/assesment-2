@@ -38,7 +38,7 @@ const Carousel = (props) => {
                 return --state % length;
         })
     }
-
+   
     function goNext() {
         setIndex(state => {
             if (state === length - 1) {

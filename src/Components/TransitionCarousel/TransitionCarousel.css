@@ -1,0 +1,87 @@
+/* Main Carousel */
+.carousel {
+    overflow: hidden;
+    position: relative;
+    max-width:100%;
+}
+
+.carousel:focus{
+    outline: none;
+}
+
+/* Progress Bar */
+.progress{
+    width:99.5%;
+    height: 10px;
+    border: 0.1px solid #BFBEBE;
+    background-color: #BFBEBE;
+    border-radius: 10px 10px 10px 10px;
+}
+
+.bar{
+    width: 0%;
+    height: 10px;
+    background-color: green;
+    border-radius: 10px 10px 10px 10px;
+    transform-origin: left;
+    transition: all 150ms;
+}
+
+/* Slides Container */
+.slides {
+    display: flex;
+    transition: transform 150ms ease-out;
+}
+
+.slide{
+    border-radius: 8px;
+    height: 100%;
+}
+
+/* Navigation Buttons */
+.buttons {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+
+.buttons:focus{
+    outline: none;
+}
+
+.button {
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    outline: none;
+}
+
+.button:focus {
+    border: none;
+}
+
+.button:disabled {
+    cursor: not-allowed;
+}
+
+/* Pagination */
+.pagination {
+    position: absolute;
+    bottom: 0.8rem;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+.dot {
+    height: 10px;
+    width: 10px;
+    margin: 0 2px;
+    display: inline-block;
+    cursor: pointer;
+}
