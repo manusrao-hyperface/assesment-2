@@ -50,11 +50,10 @@ function App() {
       "highlightedDot": icons.highlightedDot
     },
     "slideStyling": {
-      "slideMaxWidth":"940px",
       "imageMinWidth": "300px",
       "slideHeight": "200px",
       "borderRadius": "8px",
-      "slidesPerView":"3",
+      "slidesPerView":3,
       "gap":"20px"
     },
     "callback": {
@@ -64,7 +63,7 @@ function App() {
 
   return (
     <div className='App'>
-      <TransitionCarousel options={options} images={images}>
+      <TransitionCarousel images={images} options={options}>
       </TransitionCarousel>
     </div>
   );
