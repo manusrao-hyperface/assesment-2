@@ -14,12 +14,15 @@ const iconsObj = {
 export const defaultOptions = {
     infinite:false,
     pagination:true,
+    fraction:false,
+    progress:false,
     navButtons:true,
     accentColors:{
         "button": "#007BFE",
         "disableButton": "#A6D1FE",
         "progressBackground":"BFBEBE",
-        "progressColor":"green"
+        "progressColor":"green",
+        "fractionColor":"#007BFE",
     },
     icons:{
         "prev": iconsObj.prev,
@@ -35,6 +38,6 @@ export const defaultOptions = {
         "gap":"0px"
     },
     callback : {
-        "onSlideChange": ()=>{}
+        "onClickItem": ()=>{}
     }
 }

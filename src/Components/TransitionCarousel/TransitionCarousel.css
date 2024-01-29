@@ -46,10 +46,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-}
-
-.buttons:focus{
-    outline: none;
+    pointer-events: none;
 }
 
 .button {
@@ -57,6 +54,7 @@
     border: none;
     background-color: transparent;
     outline: none;
+    pointer-events: all;
 }
 
 .button:focus {
@@ -76,6 +74,7 @@
     left: 0;
     right: 0;
     text-align: center;
+    font-size: 1.3rem;
 }
 
 .dot {

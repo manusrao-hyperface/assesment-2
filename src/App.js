@@ -18,8 +18,8 @@ const icons = {
 }
 
 function App() {
-  const printMsg = (index) => {
-    console.log("Current index is: "+index);
+  const printDetails = (index) => {
+    console.log("From clicking a slide, clicked index is ",index)
   }
   const images = [
     img1,
@@ -33,7 +33,9 @@ function App() {
   const options = {
     'infinite': false,
     'pagination': true,
+    'fraction': true,
     'navButtons':true,
+    'progress':false,
     // 'autoplay':{
     //   "duration":3000
     // },
@@ -41,7 +43,8 @@ function App() {
       "button": "#007BFE",
       "disableButton": "#A6D1FE",
       "progressBackground":"BFBEBE",
-      "progressColor":"green"
+      "progressColor":"green",
+      'fractionColor':"#007BFE",
     },
     "icons": {
       "prev": icons.prev,
@@ -57,7 +60,7 @@ function App() {
       "gap":"20px"
     },
     "callback": {
-      "onSlideChange": printMsg
+      "onClickItem":printDetails
     }
   }
 

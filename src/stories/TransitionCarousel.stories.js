@@ -38,6 +38,18 @@ NoNavButtons.args = {
     options: {...defaultOptions,navButtons:false}
 }
 
+export const Progress = Template.bind({})
+Progress.args = {
+    images,
+    options: {...defaultOptions,progress:true}
+}
+
+export const Fraction = Template.bind({})
+Fraction.args = {
+    images,
+    options: {...defaultOptions,fraction:true}
+}
+
 export const AutoPlay = Template.bind({})
 AutoPlay.args = {
     images,
