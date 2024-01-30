@@ -2,14 +2,14 @@ import React, { useState, useRef, useEffect } from 'react'
 import './TransitionCarousel.css'
 import { defaultOptions } from '../../config/config'
 
-const TransitionCarousel = ({ images, options }) => {
+const TransitionCarousel = ({ images, options, parentWidth }) => {
     // const values
     const { infinite, pagination, fraction, navButtons, progress, autoplay, accentColors, icons, slideStyling, callback } = (options === undefined ? defaultOptions : options)
     const length = images.length;
-    const slidesPerView = slideStyling.slidesPerView;
-    const slideMaxWidth = parseInt(slideStyling.imageMinWidth) * slidesPerView + parseInt(slideStyling.gap) * (slidesPerView - 1);
+    const slidesPerView = slideStyling.slidesPerView>length?length:slideStyling.slidesPerView;
+    const carouselWidth = parseFloat(slideStyling.carouselWidth)>parentWidth?parentWidth:parseFloat(slideStyling.carouselWidth);
+    const maxWidth = (carouselWidth - parseInt(slideStyling.gap) * (slidesPerView-1)) / slidesPerView ;
     const pages = length - slidesPerView + 1;
-
     // Hooks
     const intervalID = useRef(0);
     const [curr, setCurr] = useState(0);
@@ -89,7 +89,7 @@ const TransitionCarousel = ({ images, options }) => {
     }
 
     return (
-        <div className='carousel' style={{ maxWidth: slideMaxWidth + "px" }} onTouchStart={(e) => touchStart(e)} onTouchEnd={(e) => touchEnd(e)} onTouchMove={(e) => touchMove(e)} tabIndex={0} onKeyDown={(e) => {
+        <div className='carousel' style={{ maxWidth: carouselWidth }} onTouchStart={(e) => touchStart(e)} onTouchEnd={(e) => touchEnd(e)} onTouchMove={(e) => touchMove(e)} tabIndex={0} onKeyDown={(e) => {
             switch (e.key) {
                 case "ArrowLeft": {
                     prev();
@@ -107,10 +107,10 @@ const TransitionCarousel = ({ images, options }) => {
                     <div className='bar' style={{ width: `${percent}%`, color: accentColors.progressColor }}></div>
                 </div>
             }
-            <div className='slides' style={{ transform: `translateX(-${((curr * (100 + (parseInt(slideStyling.gap) * 100 / slideMaxWidth))) / slidesPerView)}%)`, height: slideStyling.slideHeight, gap: slideStyling.gap }}>
+            <div className='slides' style={{ transform: `translateX(-${((curr * (100 + (parseInt(slideStyling.gap) * 100 / parseInt(carouselWidth)))) / slidesPerView)}%)`, height: slideStyling.slideHeight, gap: slideStyling.gap }}>
                 {
                     images.map((img, ind) => (
-                        <img src={img} alt="" key={ind} className='slide' style={{ minWidth: slideStyling.imageMinWidth }} draggable={false} onClick={() => callback.onClickItem(ind)} />
+                        <img src={img} alt="" key={ind} className='slide' style={{ minWidth: maxWidth, borderRadius: slideStyling.borderRadius }} draggable={false} onClick={() => callback.onClickItem(ind)} />
                     ))
                 }
             </div>

@@ -1,3 +1,5 @@
+import { useState, useRef, useLayoutEffect } from 'react'
+
 import TransitionCarousel from './Components/TransitionCarousel/TransitionCarousel'
 
 import img1 from './images/img_mountains_wide.jpg'
@@ -18,9 +20,12 @@ const icons = {
 }
 
 function App() {
+  
+  // const values
   const printDetails = (index) => {
     console.log("From clicking a slide, clicked index is ",index)
   }
+
   const images = [
     img1,
     img2,
@@ -35,7 +40,7 @@ function App() {
     'pagination': true,
     'fraction': true,
     'navButtons':true,
-    'progress':false,
+    'progress':true,
     // 'autoplay':{
     //   "duration":3000
     // },
@@ -53,10 +58,10 @@ function App() {
       "highlightedDot": icons.highlightedDot
     },
     "slideStyling": {
-      "imageMinWidth": "300px",
+      "carouselWidth":"10000px",
       "slideHeight": "200px",
-      "borderRadius": "8px",
-      "slidesPerView":3,
+      "borderRadius": "10px",
+      "slidesPerView":1,
       "gap":"20px"
     },
     "callback": {
@@ -64,9 +69,16 @@ function App() {
     }
   }
 
+  // Hooks
+  const [parentWidth, setParentWidth] = useState("");
+  const parentRef = useRef(null);
+  useLayoutEffect(() => {
+    setParentWidth(parentRef.current.offsetWidth);
+  }, []);
+
   return (
-    <div className='App'>
-      <TransitionCarousel images={images} options={options}>
+    <div className='App' ref={parentRef}>
+      <TransitionCarousel images={images} options={options} parentWidth={parentWidth}>
       </TransitionCarousel>
     </div>
   );

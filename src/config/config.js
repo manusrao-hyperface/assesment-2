@@ -30,13 +30,13 @@ export const defaultOptions = {
         "dot": iconsObj.dot,
         "highlightedDot": iconsObj.highlightedDot
     },
-    slideStyling : {
-        "imageMinWidth": "300px",
+    "slideStyling": {
+        "carouselWidth":"620px",
         "slideHeight": "200px",
-        "borderRadius": "8px",
-        "slidesPerView":"1",
-        "gap":"0px"
-    },
+        "borderRadius": "10px",
+        "slidesPerView":2,
+        "gap":"20px"
+      },
     callback : {
         "onClickItem": ()=>{}
     }
