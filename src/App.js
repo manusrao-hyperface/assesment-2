@@ -1,4 +1,4 @@
-import TransitionCarousel from './Components/TransitionCarousel/TransitionCarousel'
+import Carousel from './Components/Carousel/Carousel'
 
 import img1 from './images/img_mountains_wide.jpg'
 import img2 from './images/img_snow_wide.jpg'
@@ -69,8 +69,8 @@ function App() {
 
   return (
     <div className='App'>
-      <TransitionCarousel carouselSlides={images} options={options}>
-      </TransitionCarousel>
+      <Carousel carouselSlides={images} options={options}>
+      </Carousel>
     </div>
   );
 }
