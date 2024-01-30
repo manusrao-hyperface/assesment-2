@@ -12,7 +12,7 @@
 /* Progress Bar */
 .carousel-progress{
     width:99.5%;
-    height: 10px;
+    height: 5px;
     border: 0.1px solid #BFBEBE;
     background-color: #BFBEBE;
     border-radius: 10px 10px 10px 10px;
@@ -20,17 +20,15 @@
 
 .carousel-bar{
     width: 0%;
-    height: 10px;
+    height: 5px;
     background-color: green;
     border-radius: 10px 10px 10px 10px;
     transform-origin: left;
-    transition: all 150ms;
 }
 
 /* Slides Container */
 .carousel-slides {
     display: flex;
-    transition: transform 150ms ease-out;
 }
 
 .carousel-slide{

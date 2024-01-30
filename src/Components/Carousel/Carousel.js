@@ -4,7 +4,7 @@ import { defaultOptions } from '../../config/config'
 
 const Carousel = ({ carouselSlides, options }) => {
     // const values
-    const { infinite, pagination, fraction, navButtons, progress, autoplay, accentColors, icons, slideStyling, callback } = (options === undefined ? defaultOptions : options)
+    const { infinite, pagination, navButtons, progress, autoplay, accentColors, icons, slideStyling, callback } = (options === undefined ? defaultOptions : options)
     const length = carouselSlides.length;
     const slidesPerView = slideStyling.slidesPerView>length?length:slideStyling.slidesPerView;
     const pages = length - slidesPerView + 1;
@@ -113,10 +113,10 @@ const Carousel = ({ carouselSlides, options }) => {
         }}>
             {progress &&
                 <div className='carousel-progress' style={{ backgroundColor: accentColors.progressBackground }}>
-                    <div className='carousel-bar' style={{ width: `${percent}%`, color: accentColors.progressColor }}></div>
+                    <div className='carousel-bar' style={{ width: `${percent}%`, color: accentColors.progressColor, transition:slideStyling.transition }}></div>
                 </div>
             }
-            <div className='carousel-slides' style={{ transform: `translateX(-${((curr * (100 + (parseInt(slideStyling.gap) * 100 / parseInt(carouselWidth)))) / slidesPerView)}%)`, height: slideStyling.slideHeight, gap: slideStyling.gap }}>
+            <div className='carousel-slides' style={{ transform: `translateX(-${((curr * (100 + (parseInt(slideStyling.gap) * 100 / parseInt(carouselWidth)))) / slidesPerView)}%)`, height: slideStyling.slideHeight, gap: slideStyling.gap, transition:slideStyling.transition }}>
                 {
                     carouselSlides.map((slide, ind) => (
                         <div className='carousel-slide' key={ind} style={{ minWidth: maxWidth}} draggable={false} onClick={() => callback.onClickItem(ind)} >

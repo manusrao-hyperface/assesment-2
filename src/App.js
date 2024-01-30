@@ -60,7 +60,8 @@ function App() {
       "carouselWidth":"1000px",
       "slideHeight": "300px",
       "slidesPerView":1,
-      "gap":"20px"
+      "gap":"20px",
+      "transition":"all 150ms ease-out"
     },
     "callback": {
       "onClickItem":printDetails

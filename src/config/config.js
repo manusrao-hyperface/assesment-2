@@ -29,12 +29,13 @@ export const defaultOptions = {
         "dot": iconsObj.dot,
         "highlightedDot": iconsObj.highlightedDot
     },
-    "slideStyling": {
+    slideStyling: {
         "carouselWidth":"620px",
         "slideHeight": "200px",
         "slidesPerView":2,
-        "gap":"20px"
-      },
+        "gap":"20px",
+        "transition":"all 150ms ease-out"
+    },
     callback : {
         "onClickItem": ()=>{}
     }
