@@ -13,8 +13,7 @@ const iconsObj = {
 
 export const defaultOptions = {
     infinite:false,
-    pagination:true,
-    fraction:false,
+    pagination:"custom",
     progress:false,
     navButtons:true,
     accentColors:{

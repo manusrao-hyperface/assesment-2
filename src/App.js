@@ -3,7 +3,7 @@ import TransitionCarousel from './Components/TransitionCarousel/TransitionCarous
 import img1 from './images/img_mountains_wide.jpg'
 import img2 from './images/img_snow_wide.jpg'
 import img3 from './images/img_nature_wide.jpg'
-
+import img4 from './images/2.jpeg'
 const icons = {
   "prev": <svg className='svg'
     xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
@@ -30,13 +30,13 @@ function App() {
     img3,
     img3,
     img3,
-    img3
+    img3,
+    img4
   ]
 
   const options = {
     'infinite': false,
-    'pagination': true,
-    'fraction': true,
+    'pagination': "custom",
     'navButtons':true,
     'progress':true,
     // 'autoplay':{
@@ -56,10 +56,10 @@ function App() {
       "highlightedDot": icons.highlightedDot
     },
     "slideStyling": {
-      "carouselWidth":"100000px",
-      "slideHeight": "200px",
+      "carouselWidth":"1000px",
+      "slideHeight": "350px",
       "borderRadius": "10px",
-      "slidesPerView":1,
+      "slidesPerView":2,
       "gap":"20px"
     },
     "callback": {

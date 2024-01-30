@@ -131,7 +131,7 @@ const TransitionCarousel = ({ images, options }) => {
                     {icons.next}
                 </button>
             </div>}
-            {pagination && !fraction && <div className='pagination'>
+            {pagination==="custom" && <div className='pagination'>
                 {images.map((_, ind) => {
                     if (ind < length - slidesPerView + 1)
                         return <div className={"dot"} key={ind} onClick={(e) => {
@@ -146,7 +146,7 @@ const TransitionCarousel = ({ images, options }) => {
                     return "";
                 })}
             </div>}
-            {pagination && fraction && <div className='pagination' style={{ color: accentColors.fractionColor }}>
+            {pagination==="fraction" && <div className='pagination' style={{ color: accentColors.fractionColor }}>
                 {`${curr + 1} / ${pages}`}
             </div>}
         </div>
