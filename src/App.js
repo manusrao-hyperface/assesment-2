@@ -38,7 +38,7 @@ function App() {
   const options = {
     'infinite': false,
     'pagination': "custom",
-    'navButtons': true,
+    'navigationButtons': true,
     'progress': true,
     // 'autoplay':{
     //   "duration":3000
