@@ -1,15 +1,14 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect, useLayoutEffect } from 'react'
 import './TransitionCarousel.css'
 import { defaultOptions } from '../../config/config'
 
-const TransitionCarousel = ({ images, options, parentWidth }) => {
+const TransitionCarousel = ({ images, options }) => {
     // const values
     const { infinite, pagination, fraction, navButtons, progress, autoplay, accentColors, icons, slideStyling, callback } = (options === undefined ? defaultOptions : options)
     const length = images.length;
     const slidesPerView = slideStyling.slidesPerView>length?length:slideStyling.slidesPerView;
-    const carouselWidth = parseFloat(slideStyling.carouselWidth)>parentWidth?parentWidth:parseFloat(slideStyling.carouselWidth);
-    const maxWidth = (carouselWidth - parseInt(slideStyling.gap) * (slidesPerView-1)) / slidesPerView ;
     const pages = length - slidesPerView + 1;
+    
     // Hooks
     const intervalID = useRef(0);
     const [curr, setCurr] = useState(0);
@@ -18,7 +17,16 @@ const TransitionCarousel = ({ images, options, parentWidth }) => {
     const [currentTranslate, setCurrentTranslate] = useState(0);
     const [prevTranslate, setPrevTranslate] = useState(0);
     const [percent, setPercent] = useState((curr + 1) * 100 / pages)
+    const [parentWidth, setParentWidth] = useState(0);
+    const parentRef = useRef(null);
 
+    // Parent Width & Slide Width Calculation
+    const carouselWidth = parseFloat(slideStyling.carouselWidth)>parentWidth?parentWidth:parseFloat(slideStyling.carouselWidth);
+    const maxWidth = (carouselWidth - parseInt(slideStyling.gap) * (slidesPerView-1)) / slidesPerView ;
+    useLayoutEffect(() => {
+      setParentWidth(parentRef.current.offsetWidth);
+    }, []);
+    
     // Calculate current index [curr]
     function prev() {
         setCurr(state => {
@@ -89,6 +97,7 @@ const TransitionCarousel = ({ images, options, parentWidth }) => {
     }
 
     return (
+        <div className='main' ref={parentRef}>
         <div className='carousel' style={{ maxWidth: carouselWidth }} onTouchStart={(e) => touchStart(e)} onTouchEnd={(e) => touchEnd(e)} onTouchMove={(e) => touchMove(e)} tabIndex={0} onKeyDown={(e) => {
             switch (e.key) {
                 case "ArrowLeft": {
@@ -140,6 +149,7 @@ const TransitionCarousel = ({ images, options, parentWidth }) => {
             {pagination && fraction && <div className='pagination' style={{ color: accentColors.fractionColor }}>
                 {`${curr + 1} / ${pages}`}
             </div>}
+        </div>
         </div>
     )
 }

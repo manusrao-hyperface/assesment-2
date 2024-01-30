@@ -1,5 +1,3 @@
-import { useState, useRef, useLayoutEffect } from 'react'
-
 import TransitionCarousel from './Components/TransitionCarousel/TransitionCarousel'
 
 import img1 from './images/img_mountains_wide.jpg'
@@ -58,7 +56,7 @@ function App() {
       "highlightedDot": icons.highlightedDot
     },
     "slideStyling": {
-      "carouselWidth":"10000px",
+      "carouselWidth":"100000px",
       "slideHeight": "200px",
       "borderRadius": "10px",
       "slidesPerView":1,
@@ -69,16 +67,9 @@ function App() {
     }
   }
 
-  // Hooks
-  const [parentWidth, setParentWidth] = useState("");
-  const parentRef = useRef(null);
-  useLayoutEffect(() => {
-    setParentWidth(parentRef.current.offsetWidth);
-  }, []);
-
   return (
-    <div className='App' ref={parentRef}>
-      <TransitionCarousel images={images} options={options} parentWidth={parentWidth}>
+    <div className='App'>
+      <TransitionCarousel images={images} options={options}>
       </TransitionCarousel>
     </div>
   );
