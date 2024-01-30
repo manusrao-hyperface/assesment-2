@@ -1,6 +1,6 @@
 # Task: Image Carousel Component
 
-Three Carousel components are made supporting both button and touch navigation.
+TThree Carousel components are made, both supporting button and touch navigation.
 
 ## Transition Carousel Component
 
