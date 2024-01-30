@@ -97,7 +97,7 @@ const TransitionCarousel = ({ images, options }) => {
     }
 
     return (
-        <div className='main' ref={parentRef}>
+        <div className='carousel-main' ref={parentRef}>
         <div className='carousel' style={{ maxWidth: carouselWidth }} onTouchStart={(e) => touchStart(e)} onTouchEnd={(e) => touchEnd(e)} onTouchMove={(e) => touchMove(e)} tabIndex={0} onKeyDown={(e) => {
             switch (e.key) {
                 case "ArrowLeft": {
@@ -112,29 +112,29 @@ const TransitionCarousel = ({ images, options }) => {
             }
         }}>
             {progress &&
-                <div className='progress' style={{ backgroundColor: accentColors.progressBackground }}>
-                    <div className='bar' style={{ width: `${percent}%`, color: accentColors.progressColor }}></div>
+                <div className='carousel-progress' style={{ backgroundColor: accentColors.progressBackground }}>
+                    <div className='carousel-bar' style={{ width: `${percent}%`, color: accentColors.progressColor }}></div>
                 </div>
             }
-            <div className='slides' style={{ transform: `translateX(-${((curr * (100 + (parseInt(slideStyling.gap) * 100 / parseInt(carouselWidth)))) / slidesPerView)}%)`, height: slideStyling.slideHeight, gap: slideStyling.gap }}>
+            <div className='carousel-slides' style={{ transform: `translateX(-${((curr * (100 + (parseInt(slideStyling.gap) * 100 / parseInt(carouselWidth)))) / slidesPerView)}%)`, height: slideStyling.slideHeight, gap: slideStyling.gap }}>
                 {
                     images.map((img, ind) => (
-                        <img src={img} alt="" key={ind} className='slide' style={{ minWidth: maxWidth, borderRadius: slideStyling.borderRadius }} draggable={false} onClick={() => callback.onClickItem(ind)} />
+                        <img src={img} alt="" key={ind} className='carousel-slide' style={{ minWidth: maxWidth, borderRadius: slideStyling.borderRadius }} draggable={false} onClick={() => callback.onClickItem(ind)} />
                     ))
                 }
             </div>
-            {<div className='buttons' style={{ visibility: (navButtons ? "visible" : "hidden") }}>
-                <button onClick={(event) => { event.stopPropagation(); prev() }} className='button' style={{ "color": (!infinite && curr === 0 ? accentColors.disableButton : accentColors.button) }} disabled={infinite ? false : curr === 0}>
+            {<div className='carousel-buttons' style={{ visibility: (navButtons ? "visible" : "hidden") }}>
+                <button onClick={(event) => { event.stopPropagation(); prev() }} className='carousel-button' style={{ "color": (!infinite && curr === 0 ? accentColors.disableButton : accentColors.button) }} disabled={infinite ? false : curr === 0}>
                     {icons.prev}
                 </button>
-                <button onClick={(event) => { event.stopPropagation(); next() }} className='button' style={{ "color": (!infinite && curr === length - slidesPerView ? accentColors.disableButton : accentColors.button) }} disabled={infinite ? false : curr === length - slidesPerView}>
+                <button onClick={(event) => { event.stopPropagation(); next() }} className='carousel-button' style={{ "color": (!infinite && curr === length - slidesPerView ? accentColors.disableButton : accentColors.button) }} disabled={infinite ? false : curr === length - slidesPerView}>
                     {icons.next}
                 </button>
             </div>}
-            {pagination==="custom" && <div className='pagination'>
+            {pagination==="custom" && <div className='carousel-pagination'>
                 {images.map((_, ind) => {
                     if (ind < length - slidesPerView + 1)
-                        return <div className={"dot"} key={ind} onClick={(e) => {
+                        return <div className={"carousel-dot"} key={ind} onClick={(e) => {
                             setCurr(ind);
                         }}>
                             {(ind === curr) ?
@@ -146,7 +146,7 @@ const TransitionCarousel = ({ images, options }) => {
                     return "";
                 })}
             </div>}
-            {pagination==="fraction" && <div className='pagination' style={{ color: accentColors.fractionColor }}>
+            {pagination==="fraction" && <div className='carousel-pagination' style={{ color: accentColors.fractionColor }}>
                 {`${curr + 1} / ${pages}`}
             </div>}
         </div>

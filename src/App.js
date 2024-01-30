@@ -57,7 +57,7 @@ function App() {
     },
     "slideStyling": {
       "carouselWidth":"1000px",
-      "slideHeight": "350px",
+      "slideHeight": "300px",
       "borderRadius": "10px",
       "slidesPerView":2,
       "gap":"20px"

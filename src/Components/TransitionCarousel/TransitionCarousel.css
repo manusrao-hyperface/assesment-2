@@ -10,7 +10,7 @@
 }
 
 /* Progress Bar */
-.progress{
+.carousel-progress{
     width:99.5%;
     height: 10px;
     border: 0.1px solid #BFBEBE;
@@ -18,7 +18,7 @@
     border-radius: 10px 10px 10px 10px;
 }
 
-.bar{
+.carousel-bar{
     width: 0%;
     height: 10px;
     background-color: green;
@@ -28,18 +28,18 @@
 }
 
 /* Slides Container */
-.slides {
+.carousel-slides {
     display: flex;
     transition: transform 150ms ease-out;
 }
 
-.slide{
+.carousel-slide{
     border-radius: 8px;
     height: 100%;
 }
 
 /* Navigation Buttons */
-.buttons {
+.carousel-buttons {
     position: absolute;
     inset: 0;
     display: flex;
@@ -49,7 +49,7 @@
     pointer-events: none;
 }
 
-.button {
+.carousel-button {
     cursor: pointer;
     border: none;
     background-color: transparent;
@@ -57,16 +57,16 @@
     pointer-events: all;
 }
 
-.button:focus {
+.carousel-button:focus {
     border: none;
 }
 
-.button:disabled {
+.carousel-button:disabled {
     cursor: not-allowed;
 }
 
 /* Pagination */
-.pagination {
+.carousel-pagination {
     position: absolute;
     bottom: 0.8rem;
     margin-left: auto;
@@ -77,7 +77,7 @@
     font-size: 1.3rem;
 }
 
-.dot {
+.carousel-dot {
     height: 10px;
     width: 10px;
     margin: 0 2px;
