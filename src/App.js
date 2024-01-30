@@ -20,35 +20,35 @@ const icons = {
 }
 
 function App() {
-  
+
   // const values
   const printDetails = (index) => {
-    console.log("From clicking a slide, clicked index is ",index)
+    console.log("From clicking a slide, clicked index is ", index)
   }
 
   const images = [
-    <img src={img1} alt=""/>,
-    <img src={img2} alt=""/>,
-    <img src={img3} alt=""/>,
-    <img src={img4} alt=""/>,
-    <img src={img1} alt=""/>,
-    <img src={img2} alt=""/>,
+    <img src={img1} alt="" />,
+    <img src={img2} alt="" />,
+    <img src={img3} alt="" />,
+    <img src={img4} alt="" />,
+    <img src={img1} alt="" />,
+    <img src={img2} alt="" />,
   ]
 
   const options = {
     'infinite': false,
     'pagination': "custom",
-    'navButtons':true,
-    'progress':true,
+    'navButtons': true,
+    'progress': true,
     // 'autoplay':{
     //   "duration":3000
     // },
     'accentColors': {
       "button": "#007BFE",
       "disableButton": "#A6D1FE",
-      "progressBackground":"BFBEBE",
-      "progressColor":"green",
-      'fractionColor':"#007BFE",
+      "progressBackground": "BFBEBE",
+      "progressColor": "green",
+      'fractionColor': "#007BFE",
     },
     "icons": {
       "prev": icons.prev,
@@ -57,14 +57,14 @@ function App() {
       "highlightedDot": icons.highlightedDot
     },
     "slideStyling": {
-      "carouselWidth":"1000px",
+      "carouselWidth": "1000px",
       "slideHeight": "300px",
-      "slidesPerView":1,
-      "gap":"20px",
-      "transition":"all 150ms ease-out"
+      "slidesPerView": 1,
+      "gap": "20px",
+      "transition": "all 150ms ease-out"
     },
     "callback": {
-      "onClickItem":printDetails
+      "onClickItem": printDetails
     }
   }
 

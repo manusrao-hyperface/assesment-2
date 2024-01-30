@@ -7,65 +7,65 @@ import img4 from '../images/2.jpeg'
 import { defaultOptions } from "../config/config";
 
 const images = [
-    <img src={img1} alt=""/>,
-    <img src={img2} alt=""/>,
-    <img src={img3} alt=""/>,
-    <img src={img4} alt=""/>,
-    <img src={img1} alt=""/>,
-    <img src={img2} alt=""/>,
-  ]
+    <img src={img1} alt="" />,
+    <img src={img2} alt="" />,
+    <img src={img3} alt="" />,
+    <img src={img4} alt="" />,
+    <img src={img1} alt="" />,
+    <img src={img2} alt="" />,
+]
 
 export default {
-    title:"Carousel",
+    title: "Carousel",
     component: Carousel,
 }
 
-const Template = args => <Carousel {...args}/>
+const Template = args => <Carousel {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
-    carouselSlides:images,
+    carouselSlides: images,
     options: defaultOptions
 }
 
 export const Infinite = Template.bind({})
 Infinite.args = {
-    carouselSlides:images,
-    options: {...defaultOptions,infinite:true}
+    carouselSlides: images,
+    options: { ...defaultOptions, infinite: true }
 }
 
 export const NoPagination = Template.bind({})
 NoPagination.args = {
-    carouselSlides:images,
-    options: {...defaultOptions,pagination:false}
+    carouselSlides: images,
+    options: { ...defaultOptions, pagination: false }
 }
 
 export const NoNavButtons = Template.bind({})
 NoNavButtons.args = {
-    carouselSlides:images,
-    options: {...defaultOptions,navButtons:false}
+    carouselSlides: images,
+    options: { ...defaultOptions, navButtons: false }
 }
 
 export const Progress = Template.bind({})
 Progress.args = {
-    carouselSlides:images,
-    options: {...defaultOptions,progress:true}
+    carouselSlides: images,
+    options: { ...defaultOptions, progress: true }
 }
 
 export const Fraction = Template.bind({})
 Fraction.args = {
-    carouselSlides:images,
-    options: {...defaultOptions,fraction:true}
+    carouselSlides: images,
+    options: { ...defaultOptions, fraction: true }
 }
 
 export const AutoPlay = Template.bind({})
 AutoPlay.args = {
-    carouselSlides:images,
-    options: {...defaultOptions,autoplay:{"duration":3000}}
+    carouselSlides: images,
+    options: { ...defaultOptions, autoplay: { "duration": 3000 } }
 }
 
 export const SlidesPerView = Template.bind({})
 SlidesPerView.args = {
-    carouselSlides:images,
-    options: {...defaultOptions}
+    carouselSlides: images,
+    options: { ...defaultOptions }
 }
