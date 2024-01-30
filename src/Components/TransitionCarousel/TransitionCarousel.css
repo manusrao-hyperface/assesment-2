@@ -34,7 +34,17 @@
 }
 
 .carousel-slide{
-    border-radius: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.carousel-slide img{
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-slide div{
+    width: 100%;
     height: 100%;
 }
 

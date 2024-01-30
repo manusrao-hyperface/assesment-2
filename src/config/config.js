@@ -32,7 +32,6 @@ export const defaultOptions = {
     "slideStyling": {
         "carouselWidth":"620px",
         "slideHeight": "200px",
-        "borderRadius": "10px",
         "slidesPerView":2,
         "gap":"20px"
       },

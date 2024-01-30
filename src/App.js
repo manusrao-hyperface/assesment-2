@@ -4,6 +4,8 @@ import img1 from './images/img_mountains_wide.jpg'
 import img2 from './images/img_snow_wide.jpg'
 import img3 from './images/img_nature_wide.jpg'
 import img4 from './images/2.jpeg'
+import compList from './compList'
+
 const icons = {
   "prev": <svg className='svg'
     xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
@@ -25,13 +27,12 @@ function App() {
   }
 
   const images = [
-    img1,
-    img2,
-    img3,
-    img3,
-    img3,
-    img3,
-    img4
+    <img src={img1} alt=""/>,
+    <img src={img2} alt=""/>,
+    <img src={img3} alt=""/>,
+    <img src={img4} alt=""/>,
+    <img src={img1} alt=""/>,
+    <img src={img2} alt=""/>,
   ]
 
   const options = {
@@ -58,8 +59,7 @@ function App() {
     "slideStyling": {
       "carouselWidth":"1000px",
       "slideHeight": "300px",
-      "borderRadius": "10px",
-      "slidesPerView":2,
+      "slidesPerView":1,
       "gap":"20px"
     },
     "callback": {
@@ -69,7 +69,7 @@ function App() {
 
   return (
     <div className='App'>
-      <TransitionCarousel images={images} options={options}>
+      <TransitionCarousel carouselSlides={images} options={options}>
       </TransitionCarousel>
     </div>
   );

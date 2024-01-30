@@ -2,10 +2,10 @@ import React, { useState, useRef, useEffect, useLayoutEffect } from 'react'
 import './TransitionCarousel.css'
 import { defaultOptions } from '../../config/config'
 
-const TransitionCarousel = ({ images, options }) => {
+const TransitionCarousel = ({ carouselSlides, options }) => {
     // const values
     const { infinite, pagination, fraction, navButtons, progress, autoplay, accentColors, icons, slideStyling, callback } = (options === undefined ? defaultOptions : options)
-    const length = images.length;
+    const length = carouselSlides.length;
     const slidesPerView = slideStyling.slidesPerView>length?length:slideStyling.slidesPerView;
     const pages = length - slidesPerView + 1;
     
@@ -118,8 +118,10 @@ const TransitionCarousel = ({ images, options }) => {
             }
             <div className='carousel-slides' style={{ transform: `translateX(-${((curr * (100 + (parseInt(slideStyling.gap) * 100 / parseInt(carouselWidth)))) / slidesPerView)}%)`, height: slideStyling.slideHeight, gap: slideStyling.gap }}>
                 {
-                    images.map((img, ind) => (
-                        <img src={img} alt="" key={ind} className='carousel-slide' style={{ minWidth: maxWidth, borderRadius: slideStyling.borderRadius }} draggable={false} onClick={() => callback.onClickItem(ind)} />
+                    carouselSlides.map((slide, ind) => (
+                        <div className='carousel-slide' key={ind} style={{ minWidth: maxWidth}} draggable={false} onClick={() => callback.onClickItem(ind)} >
+                            {slide}
+                        </div>
                     ))
                 }
             </div>
@@ -132,7 +134,7 @@ const TransitionCarousel = ({ images, options }) => {
                 </button>
             </div>}
             {pagination==="custom" && <div className='carousel-pagination'>
-                {images.map((_, ind) => {
+                {carouselSlides.map((_, ind) => {
                     if (ind < length - slidesPerView + 1)
                         return <div className={"carousel-dot"} key={ind} onClick={(e) => {
                             setCurr(ind);
