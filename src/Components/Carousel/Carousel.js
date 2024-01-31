@@ -4,15 +4,21 @@ import { defaultOptions } from '../../config/config'
 
 const Carousel = ({ carouselSlides, options }) => {
     // Setting constant and default values
-    const { infinite, pagination, navigationButtons, progress, autoplay} = (options === undefined ? defaultOptions : options)
-    const accentColors = (options!==undefined && options.accentColors===undefined?defaultOptions.accentColors:options.accentColors)
-    const icons = (options!==undefined && options.icons===undefined?defaultOptions.icons:options.icons)
-    const slideStyling = (options!==undefined && options.slideStyling===undefined?defaultOptions.slideStyling:options.slideStyling)
-    const callback = (options!==undefined && options.callback===undefined?defaultOptions.callback:options.callback)
+    let { infinite, pagination, navigationButtons, progress, autoplay, accentColors, icons, slideStyling, callback } = options
+    if (infinite === undefined)
+        infinite = defaultOptions.infinite;
+    if (pagination === undefined)
+        pagination = defaultOptions.pagination;
+    if (navigationButtons === undefined)
+        navigationButtons = defaultOptions.navigationButtons
+    if (progress === undefined)
+        progress = defaultOptions.progress
+    if (callback === undefined)
+        callback = defaultOptions.callback
     const length = carouselSlides.length;
-    const slidesPerView = slideStyling.slidesPerView>length?length:slideStyling.slidesPerView;
+    const slidesPerView = slideStyling.slidesPerView > length ? length : slideStyling.slidesPerView;
     const pages = length - slidesPerView + 1;
-    
+
     // Hooks
     const intervalID = useRef(0);
     const [curr, setCurr] = useState(0);
@@ -25,12 +31,12 @@ const Carousel = ({ carouselSlides, options }) => {
     const parentRef = useRef(null);
 
     // Parent Width & Slide Width Calculation
-    const carouselWidth = parseFloat(slideStyling.carouselWidth)>parentWidth?parentWidth:parseFloat(slideStyling.carouselWidth);
-    const maxWidth = (carouselWidth - parseInt(slideStyling.gap) * (slidesPerView-1)) / slidesPerView ;
+    const carouselWidth = parseFloat(slideStyling.carouselWidth) > parentWidth ? parentWidth : parseFloat(slideStyling.carouselWidth);
+    const maxWidth = (carouselWidth - parseInt(slideStyling.gap) * (slidesPerView - 1)) / slidesPerView;
     useLayoutEffect(() => {
-      setParentWidth(parentRef.current.offsetWidth);
+        setParentWidth(parentRef.current.offsetWidth);
     }, []);
-    
+
     // Calculate current index [curr]
     function prev() {
         setCurr(state => {
@@ -102,60 +108,60 @@ const Carousel = ({ carouselSlides, options }) => {
 
     return (
         <div className='carousel-main' ref={parentRef}>
-        <div className='carousel' style={{ maxWidth: carouselWidth }} onTouchStart={(e) => touchStart(e)} onTouchEnd={(e) => touchEnd(e)} onTouchMove={(e) => touchMove(e)} tabIndex={0} onKeyDown={(e) => {
-            switch (e.key) {
-                case "ArrowLeft": {
-                    prev();
-                    break;
+            <div className='carousel' style={{ maxWidth: carouselWidth }} onTouchStart={(e) => touchStart(e)} onTouchEnd={(e) => touchEnd(e)} onTouchMove={(e) => touchMove(e)} tabIndex={0} onKeyDown={(e) => {
+                switch (e.key) {
+                    case "ArrowLeft": {
+                        prev();
+                        break;
+                    }
+                    case "ArrowRight": {
+                        next();
+                        break;
+                    }
+                    default: { }
                 }
-                case "ArrowRight": {
-                    next();
-                    break;
+            }}>
+                {progress &&
+                    <div className='carousel-progress' style={{ backgroundColor: accentColors.progressBackground }}>
+                        <div className='carousel-bar' style={{ width: `${percent}%`, color: accentColors.progressColor, transition: slideStyling.transition }}></div>
+                    </div>
                 }
-                default: { }
-            }
-        }}>
-            {progress &&
-                <div className='carousel-progress' style={{ backgroundColor: accentColors.progressBackground }}>
-                    <div className='carousel-bar' style={{ width: `${percent}%`, color: accentColors.progressColor, transition:slideStyling.transition }}></div>
+                <div className='carousel-slides' style={{ transform: `translateX(-${((curr * (100 + (parseInt(slideStyling.gap) * 100 / parseInt(carouselWidth)))) / slidesPerView)}%)`, height: slideStyling.slideHeight, transition: slideStyling.transition, gap: slideStyling.gap }}>
+                    {
+                        carouselSlides.map((slide, ind) => (
+                            <div className='carousel-slide' key={ind} style={{ minWidth: maxWidth }} draggable={false} onClick={() => callback.onClickItem(ind)} >
+                                {slide}
+                            </div>
+                        ))
+                    }
                 </div>
-            }
-            <div className='carousel-slides' style={{ transform: `translateX(-${((curr * (100 + (parseInt(slideStyling.gap) * 100 / parseInt(carouselWidth)))) / slidesPerView)}%)`, height: slideStyling.slideHeight, transition:slideStyling.transition, gap: slideStyling.gap }}>
-                {
-                    carouselSlides.map((slide, ind) => (
-                        <div className='carousel-slide' key={ind} style={{ minWidth: maxWidth }} draggable={false} onClick={() => callback.onClickItem(ind)} >
-                            {slide}
-                        </div>
-                    ))
-                }
+                {<div className='carousel-buttons' style={{ visibility: (navigationButtons ? "visible" : "hidden") }}>
+                    <button onClick={(event) => { event.stopPropagation(); prev() }} className='carousel-button' style={{ "color": (!infinite && curr === 0 ? accentColors.disableButton : accentColors.button) }} disabled={infinite ? false : curr === 0}>
+                        {icons.prev}
+                    </button>
+                    <button onClick={(event) => { event.stopPropagation(); next() }} className='carousel-button' style={{ "color": (!infinite && curr === length - slidesPerView ? accentColors.disableButton : accentColors.button) }} disabled={infinite ? false : curr === length - slidesPerView}>
+                        {icons.next}
+                    </button>
+                </div>}
+                {pagination === "custom" && <div className='carousel-pagination'>
+                    {carouselSlides.map((_, ind) => {
+                        if (ind < length - slidesPerView + 1)
+                            return <div className={"carousel-dot"} key={ind} onClick={(e) => {
+                                setCurr(ind);
+                            }}>
+                                {(ind === curr) ?
+                                    icons.highlightedDot
+                                    :
+                                    icons.dot
+                                }
+                            </div>
+                        return "";
+                    })}
+                </div>}
+                {pagination === "fraction" && <div className='carousel-pagination' style={{ color: accentColors.fractionColor }}>
+                    {`${curr + 1} / ${pages}`}
+                </div>}
             </div>
-            {<div className='carousel-buttons' style={{ visibility: (navigationButtons ? "visible" : "hidden") }}>
-                <button onClick={(event) => { event.stopPropagation(); prev() }} className='carousel-button' style={{ "color": (!infinite && curr === 0 ? accentColors.disableButton : accentColors.button) }} disabled={infinite ? false : curr === 0}>
-                    {icons.prev}
-                </button>
-                <button onClick={(event) => { event.stopPropagation(); next() }} className='carousel-button' style={{ "color": (!infinite && curr === length - slidesPerView ? accentColors.disableButton : accentColors.button) }} disabled={infinite ? false : curr === length - slidesPerView}>
-                    {icons.next}
-                </button>
-            </div>}
-            {pagination==="custom" && <div className='carousel-pagination'>
-                {carouselSlides.map((_, ind) => {
-                    if (ind < length - slidesPerView + 1)
-                        return <div className={"carousel-dot"} key={ind} onClick={(e) => {
-                            setCurr(ind);
-                        }}>
-                            {(ind === curr) ?
-                                icons.highlightedDot
-                                :
-                                icons.dot
-                            }
-                        </div>
-                    return "";
-                })}
-            </div>}
-            {pagination==="fraction" && <div className='carousel-pagination' style={{ color: accentColors.fractionColor }}>
-                {`${curr + 1} / ${pages}`}
-            </div>}
-        </div>
         </div>
     )
 }

@@ -1,5 +1,5 @@
 const compList = [
-    <div style={{ backgroundColor: "yellow", borderRadius: "10px", width:"200px" }}>
+    <div style={{ backgroundColor: "yellow", borderRadius: "10px", width: "200px" }}>
         <h1>Card 1</h1>
         <p>
             Lorem, ipsum dolor sit amet consectetur adipisicing elit.
@@ -7,7 +7,7 @@ const compList = [
             quasi sint corporis architecto nam error quidem nisi eum?
         </p>
     </div>,
-    <div style={{ backgroundColor: "yellow", borderRadius: "10px", width:"200px" }}>
+    <div style={{ backgroundColor: "yellow", borderRadius: "10px", width: "200px" }}>
         <h1>Card 2</h1>
         <p>
             Lorem, ipsum dolor sit amet consectetur adipisicing elit.

@@ -27,12 +27,12 @@ function App() {
   }
 
   const images = [
-    <img src={img1} alt="" width={"500px"}/>,
-    <img src={img2} alt="" width={"500px"}/>,
-    <img src={img3} alt="" width={"500px"}/>,
-    <img src={img4} alt="" width={"500px"}/>,
-    <img src={img1} alt="" width={"500px"}/>,
-    <img src={img2} alt="" width={"500px"}/>,
+    <img src={img1} alt="" width={"500px"} />,
+    <img src={img2} alt="" width={"500px"} />,
+    <img src={img3} alt="" width={"500px"} />,
+    <img src={img4} alt="" width={"500px"} />,
+    <img src={img1} alt="" width={"500px"} />,
+    <img src={img2} alt="" width={"500px"} />,
   ]
 
   const options = {

@@ -1,48 +1,59 @@
-# Task: Image Carousel Component
+**Pure React Carousel Component**
 
-Three Carousel components are made, both supporting button and touch navigation.
+**Installation:** Import the component as below:
 
-## Transition Carousel Component
+    import Carousel from './Components/Carousel/Carousel';
 
-**Props**
+**Dependencies:** *react react-dom*
 
-|**Name**|**Type**|**Description**|
-| :- | :- | :- |
-|*infinite*|*boolean*|Value set to enable infinite Carousel.|
-|*pagination*|*boolean*|*Value set to show Pagination.*|
-|*fraction*|*boolean*|*Value set to show Fraction of progress.*|
-|*navButtons*|*boolean*|*Value set to show Navigation Buttons.*|
-|*progress*|*boolean*|*Value set to Progress Slider.*|
-|*autoplay*|*object*|*Value set for the properties of auto sliding.*|
-|*accentColors*|*object*|*Value set for colours of icons and pagination*|
-|*icons*|*object*|*Value set for custom icons*|
-|*slideStyling*|*object*|*Value set for the styling of slide & image*|
-|*callback*|*object*|*Value set for custom callback function*|
+**Configuration**
 
-*autoplay*
+    <Carousel carouselSlides={slides} options={options}/>
+
+Where,
+
+    slides is an array of React components.
+    options is an object of customization.
+
+**Options - Required**
+
+|**Name**|**Type**|**Default**|**Description**|
+| :- | :- | :- | :- |
+|*infinite*|*boolean*|<p>***false***</p><p>optional</p>|Value set to enable infinite Carousel.|
+|*pagination*|*string*|<p>***“custom”***</p><p>optional</p>|*Value set to show Pagination.*|
+|*navigationButtons*|*boolean*|<p>***true***</p><p>optional</p>|*Value set to show Navigation Buttons.*|
+|*progress*|*boolean*|<p>***false***</p><p>optional</p>|*Value set to show Progress.*|
+|*autoplay*|*object*|<p>***No Value***</p><p>optional</p>|*Value set for the properties of auto sliding.*|
+|*accentColors*|*object*|required|*Value set for colours of icons and pagination.*|
+|*icons*|*object*|required|*Value set for custom icons.*|
+|*slideStyling*|*object*|required|*Value set for the styling of slide & image.*|
+|*callback*|*object*|required|*Value set for custom callback function.*|
+
+***autoplay -* optional**
 |**Name**|**Type**|**Description**|
 | :- | :- | :- |
 |*duration*|*number*|*Value in Milliseconds for slide change duration* |
 
-*accentColors*
+
+***accentColors -* required**
 |**Name**|**Type**|**Description**|
 | :- | :- | :- |
 |*button*|*string*|*Value for setting colour for buttons*|
 |*disableButton*|*string*|*Value for setting colour for disabled buttons*|
-|*dots*|*string*|*Value for setting colour for pagination dots*|
-|*highlightedDots*|*string*|*Value for setting colour for current pagination dot*|
-|*fractionColor*|*string*|*Value for setting colour for fraction numbers*|
+|*progressBackground*|*string*|*Value for setting colour for progress background*|
+|*progressColor*|*string*|*Value for setting colour for progress* |
+|*fractionColor*|*string*|*Value for setting colour for fraction*|
 
-*slideStyling*
+***slideStyling -* required**
 |**Name**|**Type**|**Description**|
 | :- | :- | :- |
-|*imgMinWidth*|*string with px*|*Value for setting image width*|
-|*slideHeight*|*string with px*|*Value for setting image height*|
-|*borderRadius*|*string with px*|*Value for setting borderRadius of slide*|
-|*slidesPerView*|*number*|*Value for setting number of slides per each frame of carousel*|
-|*gap*|*string with px*|*Value for setting gap between slides in carousel*|
+|*carouselWidth*|*string with px*|*Value for setting Max Width for carousel*|
+|*slideHeight*|*string with px*|*Value for setting carousel height*|
+|*slidesPerView*|*string with px*|*Value for setting number of images per slide*|
+|*gap*|*string with px*|*Value for gap between slides*|
+|*transition*|*transition property*|*Transition value for slide change & progress animation*|
 
-*icons*
+***icons -* required**
 |**Name**|**Type**|**Description**|
 | :- | :- | :- |
 |*prev*|*SVG Element*|*Icon for prev button*|
@@ -50,7 +61,9 @@ Three Carousel components are made, both supporting button and touch navigation.
 |*dot*|*SVG Element*|*Icon for pagination dot*|
 |*highlightedDot*|*SVG Element*|*Icon for current pagination dot*|
 
-*callback*
+***callback -* optional**
 |**Name**|**Type**|**Description**|
 | :- | :- | :- |
-|*onClickItem*|*function*|*Function for calling on clicking on any slide*|
+|*onClickItem*|*function*|*Function for calling on clicking on a slide*|
+
+*Full Example configuration can found in ‘/config/config.js’*
