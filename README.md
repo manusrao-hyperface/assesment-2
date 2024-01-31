@@ -67,3 +67,5 @@ Where,
 |*onClickItem*|*function*|*Function for calling on clicking on a slide*|
 
 *Full Example configuration can found in ‘/config/config.js’*
+
+*Deployed Storybook Link: https://manu-assessment-2.netlify.app/?path=/story/carousel--default*

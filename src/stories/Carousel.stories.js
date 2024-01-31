@@ -22,9 +22,9 @@ const defaultOptions = {
     'pagination': "custom",
     'navigationButtons': true,
     'progress': true,
-    'autoplay':{
-      "duration":3000
-    },
+    // 'autoplay':{
+    //   "duration":3000
+    // },
     'accentColors': {
       "button": "#007BFE",
       "disableButton": "#A6D1FE",
