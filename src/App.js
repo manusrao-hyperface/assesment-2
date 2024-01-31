@@ -27,12 +27,12 @@ function App() {
   }
 
   const images = [
-    <img src={img1} alt="" />,
-    <img src={img2} alt="" />,
-    <img src={img3} alt="" />,
-    <img src={img4} alt="" />,
-    <img src={img1} alt="" />,
-    <img src={img2} alt="" />,
+    <img src={img1} alt="" width={"500px"}/>,
+    <img src={img2} alt="" width={"500px"}/>,
+    <img src={img3} alt="" width={"500px"}/>,
+    <img src={img4} alt="" width={"500px"}/>,
+    <img src={img1} alt="" width={"500px"}/>,
+    <img src={img2} alt="" width={"500px"}/>,
   ]
 
   const options = {
@@ -59,7 +59,7 @@ function App() {
     "slideStyling": {
       "carouselWidth": "1000px",
       "slideHeight": "300px",
-      "slidesPerView": 1,
+      "slidesPerView": 2,
       "gap": "20px",
       "transition": "all 150ms ease-out"
     },

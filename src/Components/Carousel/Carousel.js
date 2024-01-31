@@ -120,10 +120,10 @@ const Carousel = ({ carouselSlides, options }) => {
                     <div className='carousel-bar' style={{ width: `${percent}%`, color: accentColors.progressColor, transition:slideStyling.transition }}></div>
                 </div>
             }
-            <div className='carousel-slides' style={{ transform: `translateX(-${((curr * (100 + (parseInt(slideStyling.gap) * 100 / parseInt(carouselWidth)))) / slidesPerView)}%)`, height: slideStyling.slideHeight, gap: slideStyling.gap, transition:slideStyling.transition }}>
+            <div className='carousel-slides' style={{ transform: `translateX(-${((curr * (100 + (parseInt(slideStyling.gap) * 100 / parseInt(carouselWidth)))) / slidesPerView)}%)`, height: slideStyling.slideHeight, transition:slideStyling.transition, gap: slideStyling.gap }}>
                 {
                     carouselSlides.map((slide, ind) => (
-                        <div className='carousel-slide' key={ind} style={{ minWidth: maxWidth}} draggable={false} onClick={() => callback.onClickItem(ind)} >
+                        <div className='carousel-slide' key={ind} style={{ minWidth: maxWidth }} draggable={false} onClick={() => callback.onClickItem(ind)} >
                             {slide}
                         </div>
                     ))
